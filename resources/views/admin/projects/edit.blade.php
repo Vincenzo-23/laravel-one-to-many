@@ -1,21 +1,22 @@
 @extends('layouts.app')
 
-@section('title','Add a Project')
+@section('title','Modify a Project')
 
 @section('content')
 
 <div class="container p-4">
-  <h2 class="fs-2">Add a new Project</h2>
+  <h2 class="fs-2">Modify the Project</h2>
 </div>
 
 <div class="container p-4">
-  <form action="{{ route('admin.projects.store') }}" method="POST">
+  <form action="{{ route('admin.projects.update', $project) }}" method="POST">
 
-    @csrf 
+    @csrf
+    @method('PUT') 
 
     <div class="mb-3">
       <label for="title" class="form-label"><strong>Title of the project</strong></label>
-      <input type="text" name="title" class="form-control" id="title" placeholder="Write the title" value="{{old('title')}}">
+      <input type="text" name="title" class="form-control" id="title" placeholder="Write the title" value="{{old('title', $project->title)}}">
     </div>
 
 
@@ -24,7 +25,7 @@
       <select name="type_id" class="form-control" id="type_id">
         <option value="">--Select the type--</option>
         @foreach ($types as $type)
-            <option @selected($type->id == old('type_id')) value="{{ $type->id }}">{{ $type->name }}</option>
+            <option @selected($type->id == old('type_id', $project->type_id)) value="{{ $type->id }}">{{ $type->name }}</option>
         @endforeach
       </select>  
     </div>
@@ -32,17 +33,17 @@
 
     <div class="mb-3">
       <label for="link" class="form-label"><strong>Link of the project</strong></label>
-      <input type="text" name="link" class="form-control" id="link" placeholder="Write the link to the repository" value="{{old('link')}}">
+      <input type="text" name="link" class="form-control" id="link" placeholder="Write the link to the repository" value="{{old('link', $project->link)}}">
     </div>
 
 
     <div class="mb-3">
       <label for="description" class="form-label"><strong>Project description</strong></label>
-      <textarea class="form-control" name="description" id="description" rows="3" placeholder="Write a description of your project">{{old('description')}}</textarea>
+      <textarea class="form-control" name="description" id="description" rows="3" placeholder="Write a description of your project">{{old('description', $project->description)}}</textarea>
     </div>
 
 
-    <button class="btn btn-primary">Add</button>
+    <button class="btn btn-primary">Save</button>
   </form>
 
   @if ($errors->any())

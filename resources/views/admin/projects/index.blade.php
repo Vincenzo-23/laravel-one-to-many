@@ -29,7 +29,10 @@
                   <td>{{ $project->description }}</td>
                   <td><a href="{{ $project->link }}" class="link-underline link-underline-opacity-0">Link alla repository</a></td>
                   <td>
-                    {{-- edit e delete --}}
+                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-secondary">Modify</a>
+                  </td>
+                  <td>
+                    {{-- delete --}}
                   </td>
                 </tr>
               @endforeach

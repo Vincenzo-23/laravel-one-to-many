@@ -6,6 +6,7 @@
         <h1>Project: {{ $project->title }} </h1>
     </div>
     <div class="container p-3">
+        <p><strong>Type of the project: </strong>{{ $project->type ? $project->type->name : 'Nessuna categoria' }}</p>
         <div class="fs-3"><strong>Description: </strong>{{ $project->description }}</div>
     </div>
 

@@ -44,6 +44,7 @@
 
 
     <button class="btn btn-primary">Save</button>
+    <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Cancel</a>
   </form>
 
   @if ($errors->any())

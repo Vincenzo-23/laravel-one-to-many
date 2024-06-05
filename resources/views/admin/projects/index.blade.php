@@ -14,6 +14,7 @@
               <tr>
                 <th>ID</th>
                 <th>Title</th>
+                <th>Type</th>
                 <th>Description</th>
                 <th>Link</th>
                 <th></th>
@@ -24,6 +25,7 @@
                 <tr>
                   <td>{{ $project->id }}</td>
                   <td><a class="link-underline link-underline-opacity-0 fw-bold" href="{{ route('admin.projects.show', $project) }}">{{ $project->title }}</a></td>                
+                  <td>{{ $project->type ? $project->type->name : '' }}</td>
                   <td>{{ $project->description }}</td>
                   <td><a href="{{ $project->link }}" class="link-underline link-underline-opacity-0">Link alla repository</a></td>
                   <td>
